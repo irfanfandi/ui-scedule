@@ -3,6 +3,7 @@ import {
   ArrowUpwardOutlined,
 } from "@mui/icons-material";
 import { Card, Grid, Typography } from "@mui/material";
+import Image from "next/image";
 
 const ReChartSm = ({ title, value, style = {}, valueChange, isUp }) => {
   return (
@@ -45,10 +46,24 @@ const ReChartSm = ({ title, value, style = {}, valueChange, isUp }) => {
             </Grid>
           )}
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="inherit" color={"black"}>
-            Cart
-          </Typography>
+        <Grid item xs={6} alignItems={"flex-end"} justifyItems={"flex-end"}>
+          {isUp ? (
+            <Image
+              style={{ float: "right" }}
+              alt=""
+              width="130"
+              height="130"
+              src="/up.png"
+            />
+          ) : (
+            <Image
+              style={{ float: "right" }}
+              alt=""
+              width="130"
+              height="130"
+              src="/down.png"
+            />
+          )}
         </Grid>
       </Grid>
     </Card>

@@ -7,7 +7,13 @@ import {
   LocalAtmOutlined,
   SettingsOutlined,
 } from "@mui/icons-material";
-import { Avatar, Box, ListItemAvatar, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  ListItemAvatar,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import MuiDrawer from "@mui/material/Drawer";
@@ -20,9 +26,9 @@ import Toolbar from "@mui/material/Toolbar";
 import { makeStyles, styled, useTheme } from "@mui/styles";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
-const drawerWidth = 300;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
   drawerContainer: {
@@ -50,16 +56,15 @@ const openedMixin = (theme) => ({
 const closedMixin = (theme) => ({
   backgroundColor: "black",
   overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
+  width: `calc(${theme.spacing(11)})`,
   [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
+    width: `calc(${theme.spacing(11)})`,
   },
 });
 
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  width: drawerWidth,
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
@@ -82,8 +87,8 @@ const List = styled(MuiList)(({ theme }) => ({
     borderRadius: 10,
   },
   "& .MuiListItemButton-root": {
-    paddingLeft: 24,
-    paddingRight: 24,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   "& .MuiListItemIcon-root": {
     minWidth: 0,
@@ -131,10 +136,26 @@ const menus = [
 
 export default function Sidebar() {
   const theme = useTheme();
+  const tabletScreen = useMediaQuery("(max-width:1140px)");
   const [open, setOpen] = useState(true);
   const pathname = usePathname();
   const router = useRouter();
   const classes = useStyles();
+
+  useEffect(() => {
+    if (tabletScreen || pathname === "/schedule") {
+      setOpen(false);
+    } else {
+      setOpen(true);
+    }
+    console.log(pathname);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabletScreen, pathname]);
+
+  // useEffect(() => {
+  //   if (pathname === "schedule") {
+  //   }
+  // }, [pathname]);
 
   return (
     <Fragment>
@@ -149,14 +170,16 @@ export default function Sidebar() {
               height="30"
               src="/logo.jpg"
             />
-            <Typography
-              variant="h6"
-              fontWeight={"bold"}
-              color={"white"}
-              align="center"
-            >
-              FORTIUS
-            </Typography>
+            {open && (
+              <Typography
+                variant="h6"
+                fontWeight={"bold"}
+                color={"white"}
+                align="center"
+              >
+                FORTIUS
+              </Typography>
+            )}
           </Toolbar>
           <Divider />
           <List component="nav">
@@ -169,7 +192,9 @@ export default function Sidebar() {
                   }}
                 >
                   <ListItemIcon sx={{ color: "white" }}>{icon}</ListItemIcon>
-                  <ListItemText sx={{ color: "white" }} primary={name} />
+                  {open && (
+                    <ListItemText sx={{ color: "white" }} primary={name} />
+                  )}
                 </ListItemButton>
               </ListItem>
             ))}
@@ -182,7 +207,9 @@ export default function Sidebar() {
                 <ListItemIcon sx={{ color: "white" }}>
                   <SettingsOutlined />
                 </ListItemIcon>
-                <ListItemText sx={{ color: "white" }} primary={"Setting"} />
+                {open && (
+                  <ListItemText sx={{ color: "white" }} primary={"Setting"} />
+                )}
               </ListItemButton>
             </ListItem>
             <Divider light />
@@ -191,20 +218,22 @@ export default function Sidebar() {
                 <ListItemAvatar>
                   <Avatar sx={{ width: 40, height: 40 }} />
                 </ListItemAvatar>
-                <ListItemText
-                  sx={{ color: "white" }}
-                  primary="Olive"
-                  secondary={
-                    <Typography
-                      sx={{ color: "white" }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      olive@gmail.com
-                    </Typography>
-                  }
-                />
+                {open && (
+                  <ListItemText
+                    sx={{ color: "white" }}
+                    primary="Olive"
+                    secondary={
+                      <Typography
+                        sx={{ color: "white" }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        olive@gmail.com
+                      </Typography>
+                    }
+                  />
+                )}
               </ListItemButton>
             </ListItem>
           </List>

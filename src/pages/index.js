@@ -25,7 +25,7 @@ export default function Index() {
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           mt={2}
         >
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <ReChartSm
               title="Total Employees"
               value="2,420"
@@ -37,10 +37,10 @@ export default function Index() {
               value="100"
               valueChange="50"
               isUp={false}
-              style={{ mt: 2 }}
+              style={{ mt: 4 }}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={8}>
             <Card sx={{ p: 2, borderRadius: 2 }} elevation={1}>
               <Typography variant="inherit" color={"black"}>
                 Diversity
@@ -49,12 +49,12 @@ export default function Index() {
                 container
                 rowSpacing={1}
                 columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-                mt={2}
+                mt={1}
               >
-                <Grid item xs={6}>
+                <Grid item xs={6} py={2}>
                   <ReChartPie title="Gender" />
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={6} py={2}>
                   <ReChartPie title="Gender" />
                 </Grid>
               </Grid>
