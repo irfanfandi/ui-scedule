@@ -10,15 +10,13 @@ const Layout = ({ children }) => {
         sx={{
           width: "100%",
           backgroundColor: "black",
-          height: "100vh",
-          overflow: "hidden",
+          overflow: "auto",
         }}
       >
         <Grid
           component="main"
           sx={{
             flexGrow: 1,
-            height: "100vh",
             mt: 2,
             backgroundColor: "white",
             p: 3,

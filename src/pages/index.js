@@ -1,14 +1,22 @@
 import ReChartPie from "@/components/ReChartPie";
 import ReChartSm from "@/components/ReChartSm";
+import ReInputSearch from "@/components/ReInputSearch";
 import Layout from "@/sections/Layout";
 import { Card, Grid, Paper, Typography } from "@mui/material";
 
 export default function Index() {
   return (
     <Layout>
-      <Typography variant="h6" color="blue" fontWeight={800}>
-        COMPANY NAME
-      </Typography>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+        <Grid item xs={9}>
+          <Typography variant="h6" color="blue" fontWeight={800}>
+            COMPANY NAME
+          </Typography>
+        </Grid>
+        <Grid item xs={3}>
+          <ReInputSearch />
+        </Grid>
+      </Grid>
       <Typography variant="h5" mt={6} fontWeight={700}>
         Welcome, John
       </Typography>

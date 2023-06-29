@@ -148,14 +148,8 @@ export default function Sidebar() {
     } else {
       setOpen(true);
     }
-    console.log(pathname);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tabletScreen, pathname]);
-
-  // useEffect(() => {
-  //   if (pathname === "schedule") {
-  //   }
-  // }, [pathname]);
 
   return (
     <Fragment>
