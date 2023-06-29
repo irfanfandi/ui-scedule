@@ -14,7 +14,7 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import GridBiweekly from "./dataGrid/GridBiweekly";
+import GridDaily from "./dataGrid/GridDaily";
 
 const useStyles = makeStyles((theme) => ({
   headerTitle: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ReCardBiweekly = () => {
+const ReCardDaily = () => {
   return (
     <Grid p={2}>
       <Grid container mt={2} direction={"row"}>
@@ -92,11 +92,11 @@ const ReCardBiweekly = () => {
             ))}
         </Grid>
         <Grid item xs={10}>
-          <GridBiweekly />
+          <GridDaily />
         </Grid>
       </Grid>
     </Grid>
   );
 };
 
-export default ReCardBiweekly;
+export default ReCardDaily;

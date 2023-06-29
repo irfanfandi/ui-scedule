@@ -5,7 +5,7 @@ import { makeStyles } from "@mui/styles";
 const useStyles = makeStyles((theme) => ({
   inputSearch: {
     width: "100%",
-    borderRadius: 4,
+    borderRadius: 2,
   },
 }));
 

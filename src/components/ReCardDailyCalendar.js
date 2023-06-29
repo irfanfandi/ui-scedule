@@ -1,3 +1,5 @@
+import FullCalendar from "@fullcalendar/react";
+import resourceTimelineDay from "@fullcalendar/resource-timeline";
 import {
   AddOutlined,
   ArrowBackIosNewOutlined,
@@ -14,7 +16,7 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import GridBiweekly from "./dataGrid/GridBiweekly";
+import { useRef, useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   headerTitle: {
@@ -27,7 +29,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ReCardBiweekly = () => {
+const date = new Date();
+const currentYear = date.getFullYear();
+const range = (start, stop, step) =>
+  Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
+const rangeYear = range(currentYear, currentYear - 10, -1).map((e) => ({
+  label: e.toString(),
+  value: e.toString(),
+}));
+
+const ReCardDailyCalendar = () => {
+  const currentMonth = String(date.getMonth() + 1).padStart(2, "0");
+  const [selectMoth, setSelectMoth] = useState(currentMonth);
+  const [selectYear, setSelectYear] = useState(currentYear);
+  const _refCalendar = useRef();
+
   return (
     <Grid p={2}>
       <Grid container mt={2} direction={"row"}>
@@ -64,7 +80,7 @@ const ReCardBiweekly = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid container mt={1} direction={"row"}>
+      <Grid container mt={2} direction={"row"}>
         <Grid item xs={2}>
           <Paper elevation={1} sx={{ width: 260, px: 1, py: 2, mt: 1 }}>
             <Grid container direction={"row"} justifyContent={"space-between"}>
@@ -92,11 +108,32 @@ const ReCardBiweekly = () => {
             ))}
         </Grid>
         <Grid item xs={10}>
-          <GridBiweekly />
+          <FullCalendar
+            height={400}
+            ref={_refCalendar}
+            plugins={[resourceTimelineDay]}
+            headerToolbar={{
+              left: "",
+              right: "",
+              center: "",
+            }}
+            initialView="resourceTimelineDay"
+            validRange={{ start: "2017-05-01", end: "2017-06-01" }}
+            progressiveEventRendering
+            resourceAreaHeaderContent="Employees"
+            resourceAreaWidth={150}
+            resources={[
+              { id: "a", title: "Tony" },
+              { id: "b", title: "Tony" },
+              { id: "c", title: "Tony" },
+              { id: "d", title: "Tony" },
+              { id: "e", title: "Tony" },
+            ]}
+          />
         </Grid>
       </Grid>
     </Grid>
   );
 };
 
-export default ReCardBiweekly;
+export default ReCardDailyCalendar;

@@ -1,17 +1,11 @@
 import ReCardBiweekly from "@/components/ReCardBiweekly";
+import ReCardDaily from "@/components/ReCardDaily";
 import ReCardMonthly from "@/components/ReCardMonthly";
+import ReCardWeekly from "@/components/ReCardWeekly ";
 import ReInputSearch from "@/components/ReInputSearch";
 import Layout from "@/sections/Layout";
 import { NotificationsNoneOutlined } from "@mui/icons-material";
-import {
-  Box,
-  Card,
-  Grid,
-  IconButton,
-  Tab,
-  Tabs,
-  Typography,
-} from "@mui/material";
+import { Box, Card, Grid, Paper, Tab, Tabs, Typography } from "@mui/material";
 import { makeStyles, useTheme } from "@mui/styles";
 import { useState } from "react";
 
@@ -63,12 +57,19 @@ export default function Schedule() {
           justifyContent="flex-end"
         >
           <Grid item>
-            <IconButton
-              sx={{ border: 1, mr: 2, borderRadius: 2, borderColor: "inherit" }}
-              color="default"
+            <Paper
+              elevation={0}
+              sx={{
+                border: 1,
+                borderColor: "GrayText",
+                py: 0.7,
+                px: 2,
+                mr: 2,
+                borderRadius: 1,
+              }}
             >
-              <NotificationsNoneOutlined />
-            </IconButton>
+              <NotificationsNoneOutlined fontSize="small" />
+            </Paper>
           </Grid>
           <ReInputSearch style={{ width: 200 }} />
         </Grid>
@@ -89,6 +90,8 @@ export default function Schedule() {
         </Box>
         {value === 0 && <ReCardMonthly />}
         {value === 1 && <ReCardBiweekly />}
+        {value === 2 && <ReCardWeekly />}
+        {value === 3 && <ReCardDaily />}
       </Card>
     </Layout>
   );

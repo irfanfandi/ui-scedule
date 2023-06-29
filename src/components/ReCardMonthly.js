@@ -1,9 +1,7 @@
 import { months } from "@/pages/schedule/constant";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import listPlugin from "@fullcalendar/list";
 import FullCalendar from "@fullcalendar/react";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import { Autocomplete, Button, Grid, TextField } from "@mui/material";
 import { makeStyles, useTheme } from "@mui/styles";
 import { useRef, useState } from "react";
@@ -52,29 +50,31 @@ const ReCardMonthly = () => {
   return (
     <Grid p={2}>
       <Grid container mt={2} direction={"row"}>
-        <Grid container xs={10} direction={"row"}>
-          <Autocomplete
-            size="small"
-            onChange={(_, newValue) => {
-              handleChangeYear(newValue);
-            }}
-            defaultValue={rangeYear.find(
-              (e) => e.value === currentYear.toString()
-            )}
-            options={rangeYear}
-            sx={{ width: 200, mr: 2 }}
-            renderInput={(params) => <TextField {...params} label="Year" />}
-          />
-          <Autocomplete
-            size="small"
-            onChange={(_, newValue) => {
-              handleChangeMoth(newValue);
-            }}
-            defaultValue={months.find((e) => e.value === currentMonth)}
-            options={months}
-            sx={{ width: 200 }}
-            renderInput={(params) => <TextField {...params} label="Month" />}
-          />
+        <Grid item xs={10}>
+          <Grid container direction={"row"}>
+            <Autocomplete
+              size="small"
+              onChange={(_, newValue) => {
+                handleChangeYear(newValue);
+              }}
+              defaultValue={rangeYear.find(
+                (e) => e.value === currentYear.toString()
+              )}
+              options={rangeYear}
+              sx={{ width: 200, mr: 2 }}
+              renderInput={(params) => <TextField {...params} label="Year" />}
+            />
+            <Autocomplete
+              size="small"
+              onChange={(_, newValue) => {
+                handleChangeMoth(newValue);
+              }}
+              defaultValue={months.find((e) => e.value === currentMonth)}
+              options={months}
+              sx={{ width: 200 }}
+              renderInput={(params) => <TextField {...params} label="Month" />}
+            />
+          </Grid>
         </Grid>
         <Grid item xs={2} justifyContent="flex-end">
           <Button style={{ float: "right" }} variant="contained">
@@ -85,7 +85,7 @@ const ReCardMonthly = () => {
 
       <FullCalendar
         ref={_refCalendar}
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
+        plugins={[dayGridPlugin, interactionPlugin]}
         headerToolbar={{
           left: "",
           right: "",
