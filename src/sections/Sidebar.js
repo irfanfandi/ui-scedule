@@ -62,20 +62,10 @@ const closedMixin = (theme) => ({
   },
 });
 
-const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
+const Drawer = styled(MuiDrawer)(({ theme, open }) => ({
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  ...(open && {
-    ...openedMixin(theme),
-    "& .MuiDrawer-paper": openedMixin(theme),
-  }),
-  ...(!open && {
-    ...closedMixin(theme),
-    "& .MuiDrawer-paper": closedMixin(theme),
-  }),
 }));
 
 const List = styled(MuiList)(({ theme }) => ({
@@ -154,7 +144,17 @@ export default function Sidebar() {
   return (
     <Fragment>
       <CssBaseline />
-      <Drawer variant="permanent" open={open}>
+      <Drawer
+        sx={{
+          ...(open && {
+            ...openedMixin(theme),
+            "& .MuiDrawer-paper": openedMixin(theme),
+          }),
+          "& .MuiDrawer-paper": open ? openedMixin(theme) : closedMixin(theme),
+        }}
+        variant="permanent"
+        open={open}
+      >
         <Box className={classes.drawerContainer}>
           <Toolbar sx={{ ml: 1, mt: 3 }}>
             <Image
