@@ -20,7 +20,7 @@ ChartJS.register(
   Legend
 );
 
-const ReChartPie = ({ title }) => {
+const ReChartPie = ({ title, backgroundColor, labels }) => {
   return (
     <Card sx={{ p: 2, borderRadius: 2 }} elevation={3}>
       <Grid>
@@ -35,11 +35,11 @@ const ReChartPie = ({ title }) => {
         >
           <Doughnut
             data={{
-              labels: ["Male", "Female"],
+              labels,
               datasets: [
                 {
-                  data: [300, 100],
-                  backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)"],
+                  data: [200, 100],
+                  backgroundColor,
                   hoverOffset: 4,
                 },
               ],

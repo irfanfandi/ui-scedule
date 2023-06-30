@@ -1,4 +1,8 @@
-import { Avatar, Grid } from "@mui/material";
+import {
+  ArrowBackIosNewOutlined,
+  ArrowForwardIosOutlined,
+} from "@mui/icons-material";
+import { Avatar, Grid, IconButton, Typography } from "@mui/material";
 import { styled } from "@mui/styles";
 import { DataGrid } from "@mui/x-data-grid";
 
@@ -51,29 +55,21 @@ const rowsData = {
     username: "Tony",
     avatar: "",
   },
-  col1: "+",
-  col2: "+",
-  col3: "+",
-  col4: "+",
-  col5: "+",
-  col6: "+",
-  col7: "+",
+  col1: "Medical Leave",
+  col2: "20 Days",
 };
 const headerConf = {
   headerClassName: "header-col",
-  width: 170,
-  headerAlign: "center",
-  align: "center",
+  width: 195,
 };
 
-const GridWeekly = () => {
+const ReTableDashboard = () => {
   const columns = [
     {
       field: "Employeess",
-      headerName: "Employeess",
-      width: 265,
+      headerName: "Employeess Name",
       headerClassName: "header-col",
-      headerAlign: "center",
+      width: 200,
       renderCell: (params) => {
         return (
           <>
@@ -85,37 +81,12 @@ const GridWeekly = () => {
     },
     {
       field: "col1",
-      headerName: "SUN 1",
+      headerName: "Type of Leave",
       ...headerConf,
     },
     {
       field: "col2",
-      headerName: "MON 2",
-      ...headerConf,
-    },
-    {
-      field: "col3",
-      headerName: "TUE 3",
-      ...headerConf,
-    },
-    {
-      field: "col4",
-      headerName: "WED 4",
-      ...headerConf,
-    },
-    {
-      field: "col5",
-      headerName: "THU 5",
-      ...headerConf,
-    },
-    {
-      field: "col6",
-      headerName: "THU 6",
-      ...headerConf,
-    },
-    {
-      field: "col7",
-      headerName: "FRI 7",
+      headerName: "Total Days",
       ...headerConf,
     },
   ];
@@ -130,11 +101,31 @@ const GridWeekly = () => {
         "& .header-col": {
           backgroundColor: "#ECF8F9",
         },
+        pl: 8,
       }}
+      container
+      justifyContent={"center"}
     >
-      <StyledDataGrid rows={rows} columns={columns} />
+      <Grid
+        container
+        direction={"row"}
+        mb={4}
+        alignItems={"center"}
+        justifyContent={"center"}
+      >
+        <IconButton size="small" sx={{ backgroundColor: "whitesmoke" }}>
+          <ArrowBackIosNewOutlined fontSize="small" />
+        </IconButton>
+        <Typography sx={{ px: 2 }}>Tue, 16 Aus 2023</Typography>
+        <IconButton size="small" sx={{ backgroundColor: "whitesmoke" }}>
+          <ArrowForwardIosOutlined fontSize="small" />
+        </IconButton>
+      </Grid>
+      <Grid container direction={"row"}>
+        <StyledDataGrid rows={rows} columns={columns} />
+      </Grid>
     </Grid>
   );
 };
 
-export default GridWeekly;
+export default ReTableDashboard;

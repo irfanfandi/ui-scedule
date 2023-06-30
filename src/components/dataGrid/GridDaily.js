@@ -49,8 +49,7 @@ const StyledDataGrid = styled(DataGrid)(({ theme }) => ({
 const rowsData = {
   Employeess: {
     username: "Tony",
-    avatar:
-      "https://assets.materialup.com/uploads/bebad102-7f40-4941-99cd-54366113003e/avatar-08.png",
+    avatar: "",
   },
   col1: "+",
   col2: "+",
@@ -91,7 +90,7 @@ const GridDaily = () => {
       renderCell: (params) => {
         return (
           <>
-            <Avatar src={params.value.avatar} />
+            <Avatar src={params.value.avatar} sx={{ mr: 2 }} />
             {params.value.username}
           </>
         );
