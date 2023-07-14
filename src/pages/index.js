@@ -6,7 +6,7 @@ import ReChartLeaveWeek from "@/components/dashboard/ReChartLeaveWeek";
 import ReChartPie from "@/components/dashboard/ReChartPie";
 import ReChartSm from "@/components/dashboard/ReChartSm";
 import ReTableDashboard from "@/components/dashboard/ReTableDashboard";
-import ReInputSearch from "@/components/ReInputSearch";
+import ReTopBar from "@/components/ReTopBar";
 import Layout from "@/sections/Layout";
 import { AddTaskOutlined } from "@mui/icons-material";
 import { Card, Divider, Grid, Paper, Typography } from "@mui/material";
@@ -14,16 +14,7 @@ import { Card, Divider, Grid, Paper, Typography } from "@mui/material";
 export default function Index() {
   return (
     <Layout>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={9}>
-          <Typography variant="h6" color="blue" fontWeight={800}>
-            COMPANY NAME
-          </Typography>
-        </Grid>
-        <Grid item xs={3}>
-          <ReInputSearch />
-        </Grid>
-      </Grid>
+      <ReTopBar />
       <Typography variant="h5" mt={6} fontWeight={700}>
         Welcome, John
       </Typography>

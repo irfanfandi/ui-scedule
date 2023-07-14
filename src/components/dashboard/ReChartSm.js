@@ -1,3 +1,4 @@
+"use client";
 import {
   ArrowDownwardOutlined,
   ArrowUpwardOutlined,
@@ -46,7 +47,7 @@ const ReChartSm = ({ title, value, style = {}, valueChange, isUp }) => {
             </Grid>
           )}
         </Grid>
-        <Grid item xs={6} alignItems={"flex-end"} justifyItems={"flex-end"}>
+        <Grid item xs={6}>
           {isUp ? (
             <Image
               style={{ float: "right" }}

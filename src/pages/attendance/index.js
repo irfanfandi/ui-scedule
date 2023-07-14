@@ -1,50 +1,19 @@
-import ReInputSearch from "@/components/ReInputSearch";
+import ReTopBar from "@/components/ReTopBar";
 import ReChartSm from "@/components/dashboard/ReChartSm";
 import ReTableAttend from "@/components/dashboard/ReTableAttend";
 import Layout from "@/sections/Layout";
-import { NotificationsNoneOutlined } from "@mui/icons-material";
-import { Card, Grid, Paper, Typography } from "@mui/material";
+import { Card, Grid, Typography } from "@mui/material";
 
 export default function Attendance() {
   return (
     <Layout>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={9}>
-          <Typography variant="h6" color="blue" fontWeight={800}>
-            COMPANY NAME
-          </Typography>
-        </Grid>
-        <Grid
-          container
-          direction={"row"}
-          xs={3}
-          alignItems={"center"}
-          justifyContent="flex-end"
-        >
-          <Grid item>
-            <Paper
-              elevation={0}
-              sx={{
-                border: 1,
-                borderColor: "GrayText",
-                py: 0.7,
-                px: 2,
-                mr: 2,
-                borderRadius: 1,
-              }}
-            >
-              <NotificationsNoneOutlined fontSize="small" />
-            </Paper>
-          </Grid>
-          <ReInputSearch style={{ width: 200 }} />
-        </Grid>
+      <ReTopBar />
+      <Grid pt={6}>
+        <Typography variant="h5" fontWeight={700}>
+          Welcome, John
+        </Typography>
+        <Typography variant="inherit">You working at ABC Company</Typography>
       </Grid>
-      <Typography variant="h5" mt={6} fontWeight={700}>
-        Welcome, John
-      </Typography>
-      <Typography variant="inherit" color={"inherit"}>
-        You working at ABC Company
-      </Typography>
       <Grid
         mt={4}
         container

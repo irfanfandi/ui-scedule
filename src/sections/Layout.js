@@ -1,4 +1,6 @@
 import { Box, Grid } from "@mui/material";
+import { Suspense } from "react";
+import Loading from "./Loading";
 import Sidebar from "./Sidebar";
 
 const Layout = ({ children }) => {
@@ -12,8 +14,8 @@ const Layout = ({ children }) => {
         }}
       >
         <Grid
-          style={{}}
-          sx={{
+          style={{
+            flexGrow: 1,
             backgroundColor: "white",
             borderTopLeftRadius: 30,
             overflow: "auto",
@@ -22,7 +24,7 @@ const Layout = ({ children }) => {
           mt={2}
           p={3}
         >
-          {children}
+          <Suspense fallback={<Loading />}>{children}</Suspense>
         </Grid>
       </Grid>
     </Box>

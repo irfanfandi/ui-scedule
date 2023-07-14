@@ -2,10 +2,9 @@ import ReCardBiweekly from "@/components/ReCardBiweekly";
 import ReCardDaily from "@/components/ReCardDaily";
 import ReCardMonthly from "@/components/ReCardMonthly";
 import ReCardWeekly from "@/components/ReCardWeekly ";
-import ReInputSearch from "@/components/ReInputSearch";
+import ReTopBar from "@/components/ReTopBar";
 import Layout from "@/sections/Layout";
-import { NotificationsNoneOutlined } from "@mui/icons-material";
-import { Box, Card, Grid, Paper, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Card, Tab, Tabs } from "@mui/material";
 import { makeStyles, useTheme } from "@mui/styles";
 import { useState } from "react";
 
@@ -43,37 +42,7 @@ export default function Schedule() {
 
   return (
     <Layout>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={9}>
-          <Typography variant="h6" color="blue" fontWeight={800}>
-            COMPANY NAME
-          </Typography>
-        </Grid>
-        <Grid
-          container
-          direction={"row"}
-          xs={3}
-          alignItems={"center"}
-          justifyContent="flex-end"
-        >
-          <Grid item>
-            <Paper
-              elevation={0}
-              sx={{
-                border: 1,
-                borderColor: "GrayText",
-                py: 0.7,
-                px: 2,
-                mr: 2,
-                borderRadius: 1,
-              }}
-            >
-              <NotificationsNoneOutlined fontSize="small" />
-            </Paper>
-          </Grid>
-          <ReInputSearch style={{ width: 200 }} />
-        </Grid>
-      </Grid>
+      <ReTopBar />
       <Card className={classes.container}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
