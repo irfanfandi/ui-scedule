@@ -6,22 +6,21 @@ const Layout = ({ children }) => {
     <Box sx={{ display: "flex" }}>
       <Sidebar />
       <Grid
-        component="main"
-        sx={{
+        style={{
           width: "100%",
           backgroundColor: "black",
-          overflow: "auto",
         }}
       >
         <Grid
-          component="main"
+          style={{}}
           sx={{
-            flexGrow: 1,
-            mt: 2,
             backgroundColor: "white",
-            p: 3,
             borderTopLeftRadius: 30,
+            overflow: "auto",
+            height: "100vh",
           }}
+          mt={2}
+          p={3}
         >
           {children}
         </Grid>
